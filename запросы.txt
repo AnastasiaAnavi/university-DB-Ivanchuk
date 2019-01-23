@@ -1,0 +1,51 @@
+______________________________________________________________________________________________
+
+INSERT INTO faculty
+VALUES ('7', 'management', 'Ukraine, Chernivtsi, Holovna str. 129', '2011', 'Chaikovskiy');
+INSERT INTO lecturer
+VALUES ('7', 'Kovalchuk', 'Svitlana', '1993-12-25', 'doctor', 'teacher', '7');
+INSERT INTO subject
+VALUES ('7', 'literature', '5', '2', '35', 'exam', '5');
+______________________________________________________________________________________________
+
+DELETE FROM subject WHERE subject_id='7';
+DELETE FROM lecturer WHERE lecturer_id='7';
+DELETE FROM faculty WHERE faculty_id='7';
+______________________________________________________________________________________________
+
+SELECT title FROM subject;
+
+SELECT title FROM faculty;
+
+SELECT surname, name FROM lecturer;
+______________________________________________________________________________________________
+
+SELECT title FROM subject
+WHERE title LIKE 'his%';
+
+SELECT title FROM faculty
+WHERE title LIKE 'm%';
+
+SELECT surname FROM lecturer
+WHERE surname LIKE 'C%';
+______________________________________________________________________________________________
+
+SELECT lecturer.surname, subject.title
+FROM lecturer
+INNER JOIN subject ON lecturer.lecturer_id = subject.lecturer_id
+
+SELECT faculty.title, subject.title
+FROM faculty
+INNER JOIN subject ON faculty.faculty_id = subject.subject_id
+
+SELECT title FROM subject WHERE semester = '2'
+______________________________________________________________________________________________
+
+SELECT lecturer.surname, faculty.title
+FROM lecturer
+INNER JOIN faculty ON lecturer.lecturer_id = faculty.faculty_id
+
+SELECT faculty.title, lecturer.surname
+FROM faculty
+INNER JOIN lecturer ON faculty.faculty_id = lecturer.lecturer_id
+
